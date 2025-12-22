@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF vs Web Slideshow Demo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
+    <title>Finca La Priorita - Presentación Comercial</title>
     <style>
         * {
             margin: 0;
@@ -14,230 +12,769 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            color: white;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .card h2 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-
-        .card p {
-            color: #666;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-btn {
+            background: #2c5530;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #4a7c59;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section - Full Screen Image */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomIn 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+            width: 90%;
+            max-width: 1000px;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-size: 5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 3px 3px 15px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .cta-button {
+            background: #2c5530;
+            color: white;
+            padding: 18px 50px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover {
+            background: #4a7c59;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Featured Images Section */
+        .featured-images {
+            padding: 0;
+            background: #000;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .featured-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .featured-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .featured-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            color: white;
+        }
+
+        .featured-item:hover .featured-overlay {
+            opacity: 1;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 100px 20px;
+            background: #000;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            color: #fff;
+            margin-bottom: 60px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* Masonry Gallery */
+        .masonry-gallery {
+            column-count: 4;
+            column-gap: 20px;
+            padding: 0;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            z-index: 10;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .masonry-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .masonry-item.large {
+            break-inside: avoid;
+        }
+
+        /* Image Grid Section */
+        .image-grid-section {
+            padding: 100px 20px;
+            background: #111;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            transition: all 0.4s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.2);
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            color: white;
+        }
+
+        .grid-item:hover .grid-overlay {
+            opacity: 1;
+        }
+
+        /* Full Width Image Sections */
+        .full-image-section {
+            padding: 0;
+            margin: 0;
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .full-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .full-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .full-image-section:hover .full-image-overlay {
+            opacity: 1;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 100px 20px;
+            background: #000;
+            text-align: center;
+        }
+
+        .info-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .info-content h2 {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .info-content p {
+            font-size: 1.3em;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
             margin-bottom: 20px;
         }
 
-        .demo-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #667eea;
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 100px 20px;
+            text-align: center;
         }
 
-        .demo-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        .cta-section h2 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
         }
 
-        .pros-cons {
-            margin-top: 20px;
+        .cta-section p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0.95;
         }
 
-        .pros-cons h3 {
-            color: #333;
-            margin: 15px 0 10px 0;
-            font-size: 1.1em;
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
 
-        .pros-cons ul {
+        /* Footer */
+        footer {
+            background: #000;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            color: #4a7c59;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-section ul {
             list-style: none;
-            padding-left: 0;
         }
 
-        .pros-cons li {
-            padding: 5px 0;
-            padding-left: 25px;
-            position: relative;
+        .footer-section ul li {
+            margin-bottom: 10px;
         }
 
-        .pros-cons li:before {
-            content: "✓";
-            position: absolute;
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #4a7c59;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Modal for images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
             left: 0;
-            color: #4caf50;
-            font-weight: bold;
-        }
-
-        .pros-cons li.cons:before {
-            content: "✗";
-            color: #f44336;
-        }
-
-        #reveal-demo {
-            width: 100%;
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-        }
-
-        .pdf-container {
-            width: 100%;
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 2px solid #e0e0e0;
-        }
-
-        .pdf-container iframe {
+            top: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            background: rgba(0,0,0,0.98);
+            cursor: pointer;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 95%;
+            max-height: 95%;
+            margin-top: 2.5%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #f1f1f1;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #4a7c59;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .masonry-gallery {
+                column-count: 3;
+            }
         }
 
         @media (max-width: 768px) {
-            .comparison {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .featured-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .featured-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .masonry-gallery {
+                column-count: 2;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masonry-gallery {
+                column-count: 1;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📊 PDF vs Web Slideshow Comparison</h1>
-        
-        <div class="comparison">
-            <!-- Web Slideshow Card -->
-            <div class="card">
-                <h2>🌐 Web Slideshow (Reveal.js)</h2>
-                <p>Modern, interactive HTML/CSS/JavaScript presentation</p>
-                
-                <div id="reveal-demo" class="reveal">
-                    <div class="slides">
-                        <section>
-                            <h2>Welcome!</h2>
-                            <p>This is a web-based slideshow</p>
-                            <p class="fragment">✨ Fully interactive</p>
-                            <p class="fragment">📱 Responsive design</p>
-                            <p class="fragment">🎨 Customizable</p>
-                        </section>
-                        <section>
-                            <h2>Slide 2</h2>
-                            <p>Navigate with arrow keys or swipe</p>
-                            <p class="fragment">Works on all devices</p>
-                        </section>
-                        <section>
-                            <h2>Slide 3</h2>
-                            <p>Perfect for websites!</p>
-                        </section>
-                    </div>
-                </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">FINCA LA PRIORITA</a>
+            <a href="tel:+34681230770" class="contact-btn">681 230 770</a>
+        </nav>
+    </header>
 
-                <div class="pros-cons">
-                    <h3>✅ Pros:</h3>
-                    <ul>
-                        <li>Native web experience</li>
-                        <li>Fully responsive</li>
-                        <li>Interactive & animated</li>
-                        <li>No external files needed</li>
-                        <li>SEO friendly</li>
-                    </ul>
-                    <h3>❌ Cons:</h3>
-                    <ul>
-                        <li class="cons">Requires coding knowledge</li>
-                        <li class="cons">Can't export to PDF easily</li>
-                    </ul>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <img src="images/image_001.jpg" alt="Finca La Priorita" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Finca La Priorita</h1>
+            <p>Una oportunidad única en el corazón de la naturaleza</p>
+            <a href="tel:+34681230770" class="cta-button">Llamar: 681 230 770</a>
+        </div>
+    </section>
+
+    <!-- Featured Images Grid -->
+    <section class="featured-images">
+        <div class="featured-grid">
+            <div class="featured-item large" onclick="openModal('images/image_004.png')">
+                <img src="images/image_004.png" alt="Finca La Priorita">
+                <div class="featured-overlay">
+                    <h3>Paisajes Excepcionales</h3>
                 </div>
             </div>
-
-            <!-- PDF Card -->
-            <div class="card">
-                <h2>📄 PDF Embedding</h2>
-                <p>Traditional document format embedded in webpage</p>
-                
-                <div class="pdf-container">
-                    <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
-                            type="application/pdf">
-                        <p>Your browser doesn't support PDFs. 
-                        <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">Download the PDF</a>.</p>
-                    </iframe>
+            <div class="featured-item" onclick="openModal('images/image_013.jpg')">
+                <img src="images/image_013.jpg" alt="Finca La Priorita">
+                <div class="featured-overlay">
+                    <h3>Instalaciones</h3>
                 </div>
-
-                <div class="pros-cons">
-                    <h3>✅ Pros:</h3>
-                    <ul>
-                        <li>Easy to create (from PowerPoint, etc.)</li>
-                        <li>Universal format</li>
-                        <li>Can be downloaded</li>
-                        <li>Print-friendly</li>
-                    </ul>
-                    <h3>❌ Cons:</h3>
-                    <ul>
-                        <li class="cons">Less interactive</li>
-                        <li class="cons">Not optimized for web</li>
-                        <li class="cons">Can be slow to load</li>
-                        <li class="cons">Mobile experience varies</li>
-                    </ul>
+            </div>
+            <div class="featured-item" onclick="openModal('images/image_024.jpg')">
+                <img src="images/image_024.jpg" alt="Finca La Priorita">
+                <div class="featured-overlay">
+                    <h3>Terrenos</h3>
+                </div>
+            </div>
+            <div class="featured-item" onclick="openModal('images/image_009.jpg')">
+                <img src="images/image_009.jpg" alt="Finca La Priorita">
+                <div class="featured-overlay">
+                    <h3>Naturaleza</h3>
+                </div>
+            </div>
+            <div class="featured-item" onclick="openModal('images/image_015.jpg')">
+                <img src="images/image_015.jpg" alt="Finca La Priorita">
+                <div class="featured-overlay">
+                    <h3>Vegetación</h3>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="card" style="margin-top: 30px;">
-            <h2>💡 Recommendation</h2>
-            <p><strong>For websites:</strong> Use web slideshows (like Reveal.js) for the best user experience. They're fast, responsive, and feel native to the web.</p>
-            <p><strong>For documents:</strong> Use PDF when you need downloadable, printable content or when sharing files created in PowerPoint/other tools.</p>
+    <!-- Full Width Image -->
+    <section class="full-image-section" onclick="openModal('images/image_031.jpg')">
+        <img src="images/image_031.jpg" alt="Finca La Priorita">
+        <div class="full-image-overlay">Ver en detalle</div>
+    </section>
+
+    <!-- Image Grid Section -->
+    <section class="image-grid-section">
+        <div class="container">
+            <h2 class="section-title">Galería Visual</h2>
+            <div class="image-grid" id="imageGrid">
+                <!-- Will be populated by JS -->
+            </div>
         </div>
+    </section>
+
+    <!-- Full Width Image -->
+    <section class="full-image-section" onclick="openModal('images/image_032.png')">
+        <img src="images/image_032.png" alt="Finca La Priorita">
+        <div class="full-image-overlay">Explorar propiedad</div>
+    </section>
+
+    <!-- Masonry Gallery -->
+    <section class="gallery-section">
+        <h2 class="section-title">Todas las Imágenes</h2>
+        <div class="masonry-gallery" id="masonryGallery">
+            <!-- Will be populated by JS -->
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-content">
+                <h2>Una Inversión con Futuro</h2>
+                <p>
+                    Finca La Priorita representa una oportunidad única para inversores y amantes 
+                    de la naturaleza que buscan una propiedad rústica de excepcional calidad.
+                </p>
+                <p>
+                    Con características destacadas, ubicación privilegiada y múltiples posibilidades 
+                    de explotación, esta finca ofrece un potencial de crecimiento y rentabilidad 
+                    excepcional.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2>¿Interesado en esta Propiedad?</h2>
+            <p>Contacte con nosotros para más información y visitas</p>
+            <div class="cta-buttons">
+                <a href="tel:+34681230770" class="cta-button" style="background: white; color: #2c5530;">📞 681 230 770</a>
+                <a href="mailto:Ignacio.navarro.lopezdelarco@gmail.com" class="cta-button" style="background: white; color: #2c5530;">✉️ Email</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.9;">Ignacio Navarro López del Arco</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Finca La Priorita</h3>
+                <p>Propiedad rústica de excepcional calidad con múltiples posibilidades de explotación y desarrollo.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><strong>Ignacio Navarro López del Arco</strong></li>
+                    <li>📞 <a href="tel:+34681230770">681 230 770</a></li>
+                    <li>📧 <a href="mailto:Ignacio.navarro.lopezdelarco@gmail.com">Ignacio.navarro.lopezdelarco@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Información</h3>
+                <ul>
+                    <li>Propiedad disponible</li>
+                    <li>Documentación completa</li>
+                    <li>Visitas concertadas</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2022 Finca La Priorita. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
     <script>
-        const revealElement = document.getElementById('reveal-demo');
-        Reveal.initialize({
-            hash: false,
-            controls: true,
-            progress: true,
-            center: true,
-            touch: true,
-            loop: false,
-            embedded: true
-        }, revealElement);
+        const imageFiles = [
+            'image_001.jpg', 'image_002.jpg', 'image_003.jpg', 'image_004.png', 'image_005.png',
+            'image_006.png', 'image_007.jpg', 'image_008.jpg', 'image_009.jpg', 'image_010.png',
+            'image_011.png', 'image_012.png', 'image_013.jpg', 'image_014.jpg', 'image_015.jpg',
+            'image_016.jpg', 'image_017.png', 'image_018.png', 'image_019.png', 'image_020.png',
+            'image_021.png', 'image_022.png', 'image_023.png', 'image_024.jpg', 'image_025.png',
+            'image_026.png', 'image_027.png', 'image_028.png', 'image_029.png', 'image_030.jpg',
+            'image_031.jpg', 'image_032.png', 'image_033.jpg', 'image_034.jpg', 'image_035.png',
+            'image_036.png', 'image_037.png', 'image_038.png', 'image_039.jpg'
+        ];
+
+        // Populate Image Grid (first 12 images)
+        const imageGrid = document.getElementById('imageGrid');
+        imageFiles.slice(0, 12).forEach((filename) => {
+            const imgPath = `images/${filename}`;
+            const gridItem = document.createElement('div');
+            gridItem.className = 'grid-item';
+            gridItem.onclick = () => openModal(imgPath);
+            
+            const img = document.createElement('img');
+            img.src = imgPath;
+            img.alt = `Finca La Priorita`;
+            img.loading = 'lazy';
+            
+            const overlay = document.createElement('div');
+            overlay.className = 'grid-overlay';
+            
+            gridItem.appendChild(img);
+            gridItem.appendChild(overlay);
+            imageGrid.appendChild(gridItem);
+        });
+
+        // Populate Masonry Gallery (all images)
+        const masonryGallery = document.getElementById('masonryGallery');
+        imageFiles.forEach((filename, index) => {
+            const imgPath = `images/${filename}`;
+            const masonryItem = document.createElement('div');
+            masonryItem.className = 'masonry-item';
+            if (index % 7 === 0) masonryItem.classList.add('large');
+            masonryItem.onclick = () => openModal(imgPath);
+            
+            const img = document.createElement('img');
+            img.src = imgPath;
+            img.alt = `Finca La Priorita - Imagen ${index + 1}`;
+            img.loading = 'lazy';
+            
+            masonryItem.appendChild(img);
+            masonryGallery.appendChild(masonryItem);
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close');
+
+        function openModal(imgPath) {
+            modal.style.display = 'block';
+            modalImg.src = imgPath;
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0,0,0,0.95)';
+            } else {
+                header.style.background = 'rgba(0,0,0,0.8)';
+            }
+        });
     </script>
 </body>
 </html>
-
