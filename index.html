@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finca La Priorita - Presentación Comercial</title>
+    <title>Finca La Priorita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,60 +14,101 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #000;
-            overflow-x: hidden;
+        :root {
+            --color-cream: #faf9f6;
+            --color-white: #ffffff;
+            --color-black: #1a1a1a;
+            --color-olive: #6b7d5a;
         }
 
-        /* Header */
-        header {
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--color-black);
+            background: var(--color-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            transition: background 0.3s;
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
+            padding: 40px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 25px 60px;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
         .logo {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4em;
+            color: var(--color-black);
             text-decoration: none;
+            letter-spacing: 0.05em;
+            font-weight: 400;
         }
 
-        .contact-btn {
-            background: #2c5530;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+        }
+
+        .nav-menu a {
+            color: var(--color-black);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .contact-btn:hover {
-            background: #4a7c59;
-            transform: scale(1.05);
-        }
-
-        /* Hero Section - Full Screen Image */
-        .hero {
+            font-size: 0.85em;
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
             position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-black);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero */
+        .hero {
+            width: 100vw;
             height: 100vh;
+            position: relative;
             overflow: hidden;
         }
 
@@ -72,12 +116,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            animation: zoomIn 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes zoomIn {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
         }
 
         .hero-overlay {
@@ -86,430 +124,427 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.4));
         }
 
         .hero-content {
             position: absolute;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: white;
-            width: 90%;
-            max-width: 1000px;
-            z-index: 10;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 120px 60px 80px;
+            color: var(--color-white);
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .hero-content h1 {
-            font-size: 5em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            text-shadow: 3px 3px 15px rgba(0,0,0,0.8);
-            letter-spacing: 2px;
+            font-size: 5.5em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
 
         .hero-content p {
-            font-size: 1.8em;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .cta-button {
-            background: #2c5530;
-            color: white;
-            padding: 18px 50px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
             font-size: 1.2em;
-            display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 600px;
         }
 
-        .cta-button:hover {
-            background: #4a7c59;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        /* Sections */
+        .section {
+            padding: 80px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        /* Featured Images Section */
-        .featured-images {
-            padding: 0;
-            background: #000;
+        .section-title {
+            font-size: 4em;
+            font-weight: 300;
+            color: var(--color-black);
+            margin-bottom: 80px;
+            text-align: center;
+            letter-spacing: -0.02em;
         }
 
-        .featured-grid {
+        /* Historia Section */
+        .historia-section {
+            background: var(--color-cream);
+        }
+
+        .historia-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .historia-text {
+            font-size: 1.4em;
+            line-height: 2;
+            color: var(--color-black);
+            font-weight: 300;
+            margin-bottom: 80px;
+        }
+
+        .ubicacion-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
+            gap: 80px;
         }
 
-        .featured-item {
+        .ubicacion-item {
+            text-align: center;
+        }
+
+        .ubicacion-item .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4em;
+            color: var(--color-olive);
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .ubicacion-item .label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+        }
+
+        /* Image Section */
+        .image-section {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            padding: 0;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+        }
+
+        /* Espacios Section */
+        .espacios-section {
+            background: var(--color-white);
+        }
+
+        .espacios-nav {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+
+        .espacio-nav-item {
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            color: var(--color-black);
+            cursor: pointer;
+            padding: 12px 0;
+            border-bottom: 1px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .espacio-nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-black);
+            transition: width 0.3s;
+        }
+
+        .espacio-nav-item:hover::after,
+        .espacio-nav-item.active::after {
+            width: 100%;
+        }
+
+        .espacio-nav-item:not(.active) {
+            opacity: 0.4;
+        }
+
+        .espacio-content {
+            display: none;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .espacio-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .espacio-description {
+            max-width: 800px;
+            margin: 0 auto 100px;
+            text-align: center;
+            font-size: 1.3em;
+            line-height: 2;
+            font-weight: 300;
+        }
+
+        .espacio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2px;
+        }
+
+        .espacio-grid-item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.6s;
+        }
+
+        .espacio-grid-item:hover {
+            transform: scale(1.02);
+            z-index: 10;
+        }
+
+        .espacio-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+
+        .espacio-grid-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Explotación Section */
+        .explotacion-section {
+            background: var(--color-cream);
+            padding: 80px 0;
+        }
+
+        .explotacion-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .explotacion-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explotacion-title {
+            margin-bottom: 60px;
+        }
+
+        .explotacion-title h3 {
+            font-size: 1.8em;
+            font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--color-black);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .explotacion-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            margin-bottom: 50px;
+        }
+
+        .explotacion-image {
             position: relative;
             overflow: hidden;
             aspect-ratio: 1;
             cursor: pointer;
         }
 
-        .featured-item.large {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        .featured-item img {
+        .explotacion-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .featured-item:hover img {
-            transform: scale(1.15);
+        .explotacion-image:hover img {
+            transform: scale(1.05);
         }
 
-        .featured-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
+        .explotacion-revenue {
+            padding-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .explotacion-revenue .amount {
+            font-size: 2.2em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--color-black);
+            letter-spacing: -0.02em;
+        }
+
+        .explotacion-revenue .label {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            letter-spacing: 0.12em;
+            font-weight: 300;
+            font-family: 'Inter', sans-serif;
+            color: var(--color-black);
+        }
+
+        /* Galería Section */
+        .galeria-section {
+            background: var(--color-white);
+        }
+
+        .galeria-nav {
             display: flex;
-            align-items: flex-end;
-            padding: 30px;
-            color: white;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
         }
 
-        .featured-item:hover .featured-overlay {
-            opacity: 1;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 100px 20px;
-            background: #000;
-        }
-
-        .section-title {
-            font-size: 3.5em;
-            color: #fff;
-            margin-bottom: 60px;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        /* Masonry Gallery */
-        .masonry-gallery {
-            column-count: 4;
-            column-gap: 20px;
-            padding: 0;
-        }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
+        .galeria-nav-item {
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
+            color: var(--color-black);
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            padding: 12px 0;
+            border-bottom: 1px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 300;
             transition: all 0.3s;
+            position: relative;
         }
 
-        .masonry-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        .galeria-nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-black);
+            transition: width 0.3s;
+        }
+
+        .galeria-nav-item:hover::after,
+        .galeria-nav-item.active::after {
+            width: 100%;
+        }
+
+        .galeria-nav-item:not(.active) {
+            opacity: 0.4;
+        }
+
+        .galeria-content {
+            display: none;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .galeria-content.active {
+            display: block;
+        }
+
+        .galeria-masonry {
+            column-count: 3;
+            column-gap: 2px;
+        }
+
+        .galeria-item {
+            break-inside: avoid;
+            margin-bottom: 2px;
+            cursor: pointer;
+            transition: transform 0.4s;
+        }
+
+        .galeria-item:hover {
+            transform: scale(1.02);
             z-index: 10;
         }
 
-        .masonry-item img {
+        .galeria-item img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s;
         }
 
-        .masonry-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .masonry-item.large {
-            break-inside: avoid;
-        }
-
-        /* Image Grid Section */
-        .image-grid-section {
-            padding: 100px 20px;
-            background: #111;
-        }
-
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
-
-        .grid-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            aspect-ratio: 4/3;
-            cursor: pointer;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            transition: all 0.4s;
-        }
-
-        .grid-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
-        }
-
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s;
-        }
-
-        .grid-item:hover img {
-            transform: scale(1.2);
-        }
-
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-            display: flex;
-            align-items: flex-end;
-            padding: 30px;
-            color: white;
-        }
-
-        .grid-item:hover .grid-overlay {
-            opacity: 1;
-        }
-
-        /* Full Width Image Sections */
-        .full-image-section {
-            padding: 0;
-            margin: 0;
-            position: relative;
-            height: 80vh;
-            overflow: hidden;
-        }
-
-        .full-image-section img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .full-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2em;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .full-image-section:hover .full-image-overlay {
-            opacity: 1;
-        }
-
-        /* Location Section */
-        .location-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+        /* Contacto Section */
+        .contacto-section {
+            background: var(--color-cream);
             text-align: center;
+            padding: 150px 60px;
         }
 
-        .location-content {
-            max-width: 1000px;
+        .contacto-content {
+            max-width: 700px;
             margin: 0 auto;
-            color: #fff;
         }
 
-        .location-content h2 {
-            font-size: 3.5em;
-            color: #fff;
-            margin-bottom: 40px;
-            font-weight: 700;
+        .contacto-content h2 {
+            font-size: 4em;
+            margin-bottom: 80px;
+            font-weight: 300;
         }
 
-        .location-content .intro {
-            font-size: 1.5em;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 50px;
-            line-height: 1.8;
-        }
-
-        .location-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .location-card {
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s;
-        }
-
-        .location-card:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-
-        .location-card .icon {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-        }
-
-        .location-card h3 {
-            font-size: 1.8em;
-            color: #4a7c59;
-            margin-bottom: 15px;
-        }
-
-        .location-card p {
+        .contacto-info {
             font-size: 1.2em;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.6;
+            line-height: 2.5;
+            font-weight: 300;
         }
 
-        .location-card .highlight {
-            color: #4a7c59;
-            font-weight: 600;
-            font-size: 1.3em;
+        .contacto-info a {
+            color: var(--color-black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-olive);
+            transition: opacity 0.3s;
         }
 
-        /* Info Section */
-        .info-section {
-            padding: 100px 20px;
-            background: #000;
-            text-align: center;
-        }
-
-        .info-content {
-            max-width: 900px;
-            margin: 0 auto;
-            color: #fff;
-        }
-
-        .info-content h2 {
-            font-size: 3em;
-            color: #fff;
-            margin-bottom: 30px;
-        }
-
-        .info-content p {
-            font-size: 1.3em;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 3.5em;
-            margin-bottom: 30px;
-        }
-
-        .cta-section p {
-            font-size: 1.5em;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
+        .contacto-info a:hover {
+            opacity: 0.6;
         }
 
         /* Footer */
         footer {
-            background: #000;
-            color: white;
-            padding: 60px 20px 20px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 20px;
-            font-size: 1.3em;
-            color: #4a7c59;
-        }
-
-        .footer-section p,
-        .footer-section ul {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #4a7c59;
-        }
-
-        .footer-bottom {
+            background: var(--color-black);
+            color: var(--color-cream);
+            padding: 80px 60px 40px;
             text-align: center;
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
+            font-size: 0.85em;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* Modal for images */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -518,7 +553,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.98);
+            background: rgba(26, 26, 26, 0.98);
             cursor: pointer;
         }
 
@@ -533,322 +568,455 @@
 
         .close {
             position: absolute;
-            top: 30px;
-            right: 50px;
-            color: #f1f1f1;
-            font-size: 50px;
-            font-weight: bold;
+            top: 50px;
+            right: 60px;
+            color: var(--color-cream);
+            font-size: 35px;
+            font-weight: 300;
             cursor: pointer;
             z-index: 2001;
-            transition: color 0.3s;
+            opacity: 0.7;
+            transition: opacity 0.3s;
         }
 
         .close:hover {
-            color: #4a7c59;
+            opacity: 1;
         }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .masonry-gallery {
-                column-count: 3;
+        @media (max-width: 1024px) {
+            .galeria-masonry {
+                column-count: 2;
             }
         }
 
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5em;
+            nav {
+                padding: 30px 30px;
             }
 
-            .hero-content p {
-                font-size: 1.2em;
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 100px 30px 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .section {
+                padding: 60px 30px;
             }
 
             .section-title {
-                font-size: 2em;
+                font-size: 2.5em;
+                margin-bottom: 60px;
             }
 
-            .featured-grid {
+            .ubicacion-grid {
                 grid-template-columns: 1fr;
+                gap: 60px;
             }
 
-            .featured-item.large {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
-            .masonry-gallery {
-                column-count: 2;
-            }
-
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section h2 {
-                font-size: 2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .masonry-gallery {
+            .galeria-masonry {
                 column-count: 1;
+            }
+
+            .explotacion-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .explotacion-column {
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+
+            .explotacion-column:last-child {
+                border-bottom: none;
+            }
+
+            .espacio-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="#" class="logo">FINCA LA PRIORITA</a>
-            <a href="tel:+34681230770" class="contact-btn">681 230 770</a>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Finca La Priorita</a>
+        <ul class="nav-menu">
+            <li><a href="#historia">Historia & Ubicación</a></li>
+            <li><a href="#espacios">Espacios</a></li>
+            <li><a href="#explotacion">Explotación</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <img src="images/image_001.jpg" alt="Finca La Priorita" class="hero-image">
+    <!-- Hero -->
+    <section class="hero">
+        <img src="images/hero.jpg" alt="Finca La Priorita" class="hero-image">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Finca La Priorita</h1>
-            <p>Una oportunidad única en el corazón de la naturaleza</p>
-            <a href="tel:+34681230770" class="cta-button">Llamar: 681 230 770</a>
+            <h1>Un legado que perdura</h1>
+            <p>Cortijo de arraigo cordobés desde hace siglos</p>
         </div>
     </section>
 
-    <!-- Location Section -->
-    <section class="location-section">
-        <div class="container">
-            <div class="location-content">
-                <h2>Ubicación Estratégica</h2>
-                <p class="intro">
-                    Finca La Priorita se encuentra estratégicamente ubicada a tan solo 
-                    <span class="highlight">2 horas de Madrid</span>, 
-                    ofreciendo la perfecta combinación entre accesibilidad y tranquilidad rural.
-                    Con <span class="highlight">múltiples conexiones de tren diarias</span> y fácil acceso por carretera, 
-                    llegar a la finca es sencillo y rápido desde la capital.
-                </p>
-                
-                <div class="location-grid">
-                    <div class="location-card">
-                        <div class="icon">🚗</div>
-                        <h3>Por Carretera</h3>
-                        <p>
-                            <span class="highlight">2 horas</span> desde Madrid<br>
-                            Acceso directo por carreteras principales<br>
-                            Fácil acceso con vehículo propio
-                        </p>
+    <!-- Historia & Ubicación -->
+    <section class="section historia-section" id="historia">
+        <div class="historia-content">
+            <p class="historia-text">
+                Finca conocida desde hace siglos por ser uno de los cortijos de mayor arraigo 
+                de la cultura cordobesa. En la actualidad representa un recurso patrimonial 
+                diferenciador y de gran interés cultural, conserva todo el sabor de la 
+                arquitectura tradicional con numerosos detalles de gran valor etnológico.
+            </p>
+            
+            <p class="historia-text" style="font-size: 1.2em; margin-top: 60px;">
+                Situada a tan solo 10km de Córdoba capital y a dos horas de Madrid en AVE. 
+                La finca cuenta con fácil acceso desde la carretera, la casa está situada a 
+                500 metros desde la entrada principal con acceso de camino de tierra.
+            </p>
+            
+            <div class="ubicacion-grid">
+                <div class="ubicacion-item">
+                    <div class="number">10km</div>
+                    <div class="label">Córdoba</div>
+                </div>
+                <div class="ubicacion-item">
+                    <div class="number">2h</div>
+                    <div class="label">Madrid AVE</div>
+                </div>
+                <div class="ubicacion-item">
+                    <div class="number">319ha</div>
+                    <div class="label">Superficie</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Break -->
+    <section class="image-section">
+        <img src="images/campo_02.jpg" alt="Finca La Priorita">
+    </section>
+
+    <!-- Espacios -->
+    <section class="section espacios-section" id="espacios">
+        <h2 class="section-title">Espacios</h2>
+        
+        <div class="espacios-nav">
+            <button class="espacio-nav-item active" data-espacio="casa-principal">Casa Principal</button>
+            <button class="espacio-nav-item" data-espacio="confort">Confort y Deporte</button>
+            <button class="espacio-nav-item" data-espacio="adyacente">Casa Adyacente</button>
+            <button class="espacio-nav-item" data-espacio="tercera">Tercera Casa</button>
+        </div>
+
+        <!-- Casa Principal -->
+        <div class="espacio-content active" id="casa-principal">
+            <p class="espacio-description">
+                La finca tiene 319 hectáreas, cuenta con una casa principal de 424m² que incluye 
+                un salón principal, una cocina, siete dormitorios, cuatro cuartos de baño y un patio interior.
+            </p>
+            <div class="espacio-grid" id="casa-principal-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Confort y Deporte -->
+        <div class="espacio-content" id="confort">
+            <p class="espacio-description">
+                Pista de tenis, pista de pádel, campo de fútbol, piscina con bar incorporado, 
+                gimnasio con cuarto de baño, casa mirador con dormitorio y cuarto de baño, capilla.
+            </p>
+            <div class="espacio-grid" id="confort-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Casa Adyacente -->
+        <div class="espacio-content" id="adyacente">
+            <p class="espacio-description">
+                Casa recién renovada con dos dormitorios con cuarto de baño 
+                y salón con cocina incorporada.
+            </p>
+            <div class="espacio-grid" id="adyacente-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Tercera Casa -->
+        <div class="espacio-content" id="tercera">
+            <p class="espacio-description">
+                Cimientos con permiso de obra para una tercera casa de más de 15 dormitorios.
+            </p>
+        </div>
+    </section>
+
+    <!-- Image Break -->
+    <section class="image-section">
+        <img src="images/jardin_piscina_04.jpg" alt="Jardín y Piscina">
+    </section>
+
+    <!-- Explotación Finca -->
+    <section class="section explotacion-section" id="explotacion">
+        <div class="explotacion-grid" id="explotacion-grid">
+            <!-- Column 1: Turismo Rural & Eventos -->
+            <div class="explotacion-column">
+                <div class="explotacion-title">
+                    <h3>Turismo Rural & Eventos</h3>
+                </div>
+                <div class="explotacion-images">
+                    <div class="explotacion-image" onclick="openModal('images/jardin_piscina_04.jpg')">
+                        <img src="images/jardin_piscina_04.jpg" alt="Turismo Rural">
                     </div>
-                    
-                    <div class="location-card">
-                        <div class="icon">🚄</div>
-                        <h3>En Tren</h3>
-                        <p>
-                            <span class="highlight">Múltiples trenes diarios</span><br>
-                            Conexión directa desde Madrid<br>
-                            Estación de tren cercana a la finca<br>
-                            Tiempo de viaje similar a carretera
-                        </p>
-                    </div>
-                    
-                    <div class="location-card">
-                        <div class="icon">📍</div>
-                        <h3>Accesibilidad</h3>
-                        <p>
-                            Perfecto equilibrio entre<br>
-                            cercanía a la capital y<br>
-                            <span class="highlight">tranquilidad rural</span>
-                        </p>
+                    <div class="explotacion-image" onclick="openModal('images/jardin_piscina_06.jpg')">
+                        <img src="images/jardin_piscina_06.jpg" alt="Eventos">
                     </div>
                 </div>
+                <div class="explotacion-revenue">
+                    <div class="amount">50.000€</div>
+                    <div class="label">Facturación 2021</div>
+                </div>
+            </div>
+
+            <!-- Column 2: Explotación Agrícola -->
+            <div class="explotacion-column">
+                <div class="explotacion-title">
+                    <h3>Explotación Agrícola</h3>
+                </div>
+                <div class="explotacion-images">
+                    <div class="explotacion-image" onclick="openModal('images/campo_07.png')">
+                        <img src="images/campo_07.png" alt="Corcho">
+                    </div>
+                    <div class="explotacion-image" onclick="openModal('images/campo_09.png')">
+                        <img src="images/campo_09.png" alt="Cosecha">
+                    </div>
+                </div>
+                <div class="explotacion-revenue">
+                    <div class="amount">2.000€</div>
+                    <div class="label">Facturación Anual</div>
+                </div>
+            </div>
+
+            <!-- Column 3: Explotación Ganadera -->
+            <div class="explotacion-column">
+                <div class="explotacion-title">
+                    <h3>Explotación Ganadera</h3>
+                </div>
+                <div class="explotacion-images">
+                    <div class="explotacion-image" onclick="openModal('images/explotacion_06.png')">
+                        <img src="images/explotacion_06.png" alt="Ganadería">
+                    </div>
+                    <div class="explotacion-image" onclick="openModal('images/campo_10.png')">
+                        <img src="images/campo_10.png" alt="Ganado">
+                    </div>
+                </div>
+                <div class="explotacion-revenue">
+                    <div class="amount">24.500€</div>
+                    <div class="label">Facturación Anual</div>
+                </div>
+            </div>
+
+            <!-- Column 4: Explotación Cinegética -->
+            <div class="explotacion-column">
+                <div class="explotacion-title">
+                    <h3>Explotación Cinegética</h3>
+                </div>
+                <div class="explotacion-images">
+                    <div class="explotacion-image" onclick="openModal('images/campo_11.png')">
+                        <img src="images/campo_11.png" alt="Caza">
+                    </div>
+                    <div class="explotacion-image" onclick="openModal('images/campo_12.png')">
+                        <img src="images/campo_12.png" alt="Fauna">
+                    </div>
+                </div>
+                <div class="explotacion-revenue">
+                    <div class="amount">10.000€</div>
+                    <div class="label">Facturación Anual</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Images Grid -->
-    <section class="featured-images">
-        <div class="featured-grid">
-            <div class="featured-item large" onclick="openModal('images/image_004.png')">
-                <img src="images/image_004.png" alt="Finca La Priorita">
-                <div class="featured-overlay">
-                    <h3>Paisajes Excepcionales</h3>
-                </div>
-            </div>
-            <div class="featured-item" onclick="openModal('images/image_013.jpg')">
-                <img src="images/image_013.jpg" alt="Finca La Priorita">
-                <div class="featured-overlay">
-                    <h3>Instalaciones</h3>
-                </div>
-            </div>
-            <div class="featured-item" onclick="openModal('images/image_024.jpg')">
-                <img src="images/image_024.jpg" alt="Finca La Priorita">
-                <div class="featured-overlay">
-                    <h3>Terrenos</h3>
-                </div>
-            </div>
-            <div class="featured-item" onclick="openModal('images/image_009.jpg')">
-                <img src="images/image_009.jpg" alt="Finca La Priorita">
-                <div class="featured-overlay">
-                    <h3>Naturaleza</h3>
-                </div>
-            </div>
-            <div class="featured-item" onclick="openModal('images/image_015.jpg')">
-                <img src="images/image_015.jpg" alt="Finca La Priorita">
-                <div class="featured-overlay">
-                    <h3>Vegetación</h3>
-                </div>
+    <!-- Galería -->
+    <section class="section galeria-section" id="galeria">
+        <h2 class="section-title">Galería</h2>
+        
+        <div class="galeria-nav">
+            <button class="galeria-nav-item active" data-galeria="casa">Casa</button>
+            <button class="galeria-nav-item" data-galeria="campo">Campo</button>
+            <button class="galeria-nav-item" data-galeria="eventos">Eventos</button>
+        </div>
+
+        <!-- Galería Casa -->
+        <div class="galeria-content active" id="galeria-casa">
+            <div class="galeria-masonry" id="casa-gallery">
+                <!-- Populated by JS -->
             </div>
         </div>
-    </section>
 
-    <!-- Full Width Image -->
-    <section class="full-image-section" onclick="openModal('images/image_031.jpg')">
-        <img src="images/image_031.jpg" alt="Finca La Priorita">
-        <div class="full-image-overlay">Ver en detalle</div>
-    </section>
-
-    <!-- Image Grid Section -->
-    <section class="image-grid-section">
-        <div class="container">
-            <h2 class="section-title">Galería Visual</h2>
-            <div class="image-grid" id="imageGrid">
-                <!-- Will be populated by JS -->
+        <!-- Galería Campo -->
+        <div class="galeria-content" id="galeria-campo">
+            <div class="galeria-masonry" id="campo-gallery">
+                <!-- Populated by JS -->
             </div>
         </div>
-    </section>
 
-    <!-- Full Width Image -->
-    <section class="full-image-section" onclick="openModal('images/image_032.png')">
-        <img src="images/image_032.png" alt="Finca La Priorita">
-        <div class="full-image-overlay">Explorar propiedad</div>
-    </section>
-
-    <!-- Masonry Gallery -->
-    <section class="gallery-section">
-        <h2 class="section-title">Todas las Imágenes</h2>
-        <div class="masonry-gallery" id="masonryGallery">
-            <!-- Will be populated by JS -->
-        </div>
-    </section>
-
-    <!-- Info Section -->
-    <section class="info-section">
-        <div class="container">
-            <div class="info-content">
-                <h2>Una Inversión con Futuro</h2>
-                <p>
-                    Finca La Priorita representa una oportunidad única para inversores y amantes 
-                    de la naturaleza que buscan una propiedad rústica de excepcional calidad.
-                </p>
-                <p>
-                    Con características destacadas, ubicación privilegiada y múltiples posibilidades 
-                    de explotación, esta finca ofrece un potencial de crecimiento y rentabilidad 
-                    excepcional.
+        <!-- Galería Eventos -->
+        <div class="galeria-content" id="galeria-eventos">
+            <div class="galeria-masonry" id="eventos-gallery">
+                <p style="text-align: center; color: var(--color-black); opacity: 0.5; padding: 100px 0;">
+                    Próximamente
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contacto">
-        <div class="container">
-            <h2>¿Interesado en esta Propiedad?</h2>
-            <p>Contacte con nosotros para más información y visitas</p>
-            <div class="cta-buttons">
-                <a href="tel:+34681230770" class="cta-button" style="background: white; color: #2c5530;">📞 681 230 770</a>
-                <a href="mailto:Ignacio.navarro.lopezdelarco@gmail.com" class="cta-button" style="background: white; color: #2c5530;">✉️ Email</a>
+    <!-- Contacto -->
+    <section class="contacto-section" id="contacto">
+        <div class="contacto-content">
+            <h2>Contacto</h2>
+            <div class="contacto-info">
+                <div>Ignacio Navarro López del Arco</div>
+                <div><a href="https://wa.me/34683248896" target="_blank" rel="noopener noreferrer">683 248 896</a></div>
+                <div><a href="mailto:Ignacio.navarro.lopezdelarco@gmail.com">Ignacio.navarro.lopezdelarco@gmail.com</a></div>
             </div>
-            <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.9;">Ignacio Navarro López del Arco</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Finca La Priorita</h3>
-                <p>Propiedad rústica de excepcional calidad con múltiples posibilidades de explotación y desarrollo.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <ul>
-                    <li><strong>Ignacio Navarro López del Arco</strong></li>
-                    <li>📞 <a href="tel:+34681230770">681 230 770</a></li>
-                    <li>📧 <a href="mailto:Ignacio.navarro.lopezdelarco@gmail.com">Ignacio.navarro.lopezdelarco@gmail.com</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Información</h3>
-                <ul>
-                    <li>Propiedad disponible</li>
-                    <li>Documentación completa</li>
-                    <li>Visitas concertadas</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2022 Finca La Priorita. Todos los derechos reservados.</p>
-        </div>
+        <p>Finca La Priorita &copy; 2022</p>
     </footer>
 
-    <!-- Image Modal -->
+    <!-- Modal -->
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
 
     <script>
-        const imageFiles = [
-            'image_001.jpg', 'image_002.jpg', 'image_003.jpg', 'image_004.png', 'image_005.png',
-            'image_006.png', 'image_007.jpg', 'image_008.jpg', 'image_009.jpg', 'image_010.png',
-            'image_011.png', 'image_012.png', 'image_013.jpg', 'image_014.jpg', 'image_015.jpg',
-            'image_016.jpg', 'image_017.png', 'image_018.png', 'image_019.png', 'image_020.png',
-            'image_021.png', 'image_022.png', 'image_023.png', 'image_024.jpg', 'image_025.png',
-            'image_026.png', 'image_027.png', 'image_028.png', 'image_029.png', 'image_030.jpg',
-            'image_031.jpg', 'image_032.png', 'image_033.jpg', 'image_034.jpg', 'image_035.png',
-            'image_036.png', 'image_037.png', 'image_038.png', 'image_039.jpg'
+        // Image categorization based on ACTUAL available files (24 images)
+        
+        // Casa Principal: entrada, patio, cocina, salón
+        const casaPrincipalImages = [
+            'entrada.jpg',
+            'patio_andaluz_01.png', 
+            'patio_andaluz_02.png', 
+            'cocina.jpg', 
+            'salon_01.jpg'
+        ];
+        
+        // Habitaciones (6 imágenes)
+        const habitacionesImages = [
+            'habitacion_01.png', 
+            'habitacion_02.png', 
+            'habitacion_03.png', 
+            'habitacion_04.png', 
+            'habitacion_05.png', 
+            'habitacion_06.png'
+        ];
+        
+        // Confort y Deporte: jardín, piscina, padel, capilla
+        const confortDeporteImages = [
+            'jardin_piscina_04.jpg', 
+            'jardin_piscina_06.jpg', 
+            'padel.jpg', 
+            'capilla.png'
+        ];
+        
+        // Todas las imágenes de casa para galería
+        const casaImages = [
+            ...casaPrincipalImages, 
+            ...habitacionesImages, 
+            ...confortDeporteImages
         ];
 
-        // Populate Image Grid (first 12 images)
-        const imageGrid = document.getElementById('imageGrid');
-        imageFiles.slice(0, 12).forEach((filename) => {
-            const imgPath = `images/${filename}`;
-            const gridItem = document.createElement('div');
-            gridItem.className = 'grid-item';
-            gridItem.onclick = () => openModal(imgPath);
+        // Campo (7 imágenes disponibles)
+        const campoImages = [
+            'campo_02.jpg', 
+            'campo_07.png', 
+            'campo_09.png', 
+            'campo_10.png', 
+            'campo_11.png', 
+            'campo_12.png', 
+            'campo_13.png'
+        ];
+
+        // Explotación (1 imagen + usar campo para completar)
+        const explotacionImages = ['explotacion_06.png'];
+        
+        // Eventos (ninguna disponible)
+        const eventosImages = [];
+
+        // Helper function to populate gallery
+        function populateGallery(containerId, images, isMasonry = false) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
             
-            const img = document.createElement('img');
-            img.src = imgPath;
-            img.alt = `Finca La Priorita`;
-            img.loading = 'lazy';
-            
-            const overlay = document.createElement('div');
-            overlay.className = 'grid-overlay';
-            
-            gridItem.appendChild(img);
-            gridItem.appendChild(overlay);
-            imageGrid.appendChild(gridItem);
+            images.forEach((filename) => {
+                const imgPath = `images/${filename}`;
+                const item = document.createElement('div');
+                item.className = isMasonry ? 'galeria-item' : 'espacio-grid-item';
+                item.onclick = () => openModal(imgPath);
+                
+                const img = document.createElement('img');
+                img.src = imgPath;
+                img.alt = filename;
+                img.loading = 'lazy';
+                
+                item.appendChild(img);
+                container.appendChild(item);
+            });
+        }
+
+        // Populate galleries
+        populateGallery('casa-gallery', casaImages, true);
+        populateGallery('campo-gallery', campoImages, true);
+        
+        // Casa Principal: entrada, patio, cocina, salón
+        populateGallery('casa-principal-grid', casaPrincipalImages);
+        
+        // Confort y Deporte: jardín, piscina, padel, capilla
+        populateGallery('confort-grid', confortDeporteImages);
+        
+        // Casa Adyacente: mostrar algunas habitaciones
+        populateGallery('adyacente-grid', habitacionesImages.slice(0, 3));
+
+        // Explotación section is now static HTML, no JS needed
+
+        // Espacios navigation
+        document.querySelectorAll('.espacio-nav-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const espacio = this.dataset.espacio;
+                
+                document.querySelectorAll('.espacio-nav-item').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.espacio-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                document.getElementById(espacio).classList.add('active');
+            });
         });
 
-        // Populate Masonry Gallery (all images)
-        const masonryGallery = document.getElementById('masonryGallery');
-        imageFiles.forEach((filename, index) => {
-            const imgPath = `images/${filename}`;
-            const masonryItem = document.createElement('div');
-            masonryItem.className = 'masonry-item';
-            if (index % 7 === 0) masonryItem.classList.add('large');
-            masonryItem.onclick = () => openModal(imgPath);
-            
-            const img = document.createElement('img');
-            img.src = imgPath;
-            img.alt = `Finca La Priorita - Imagen ${index + 1}`;
-            img.loading = 'lazy';
-            
-            masonryItem.appendChild(img);
-            masonryGallery.appendChild(masonryItem);
+        // Galería navigation
+        document.querySelectorAll('.galeria-nav-item').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const galeria = this.dataset.galeria;
+                
+                document.querySelectorAll('.galeria-nav-item').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.galeria-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                document.getElementById(`galeria-${galeria}`).classList.add('active');
+            });
         });
 
-        // Modal functionality
+        // Modal
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
         const closeBtn = document.querySelector('.close');
@@ -877,21 +1045,22 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Header background on scroll
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
+            const nav = document.getElementById('navbar');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(0,0,0,0.95)';
+                nav.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(0,0,0,0.8)';
+                nav.classList.remove('scrolled');
             }
         });
     </script>
