@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF vs Web Slideshow Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/white.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .demo-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .pros-cons {
+            margin-top: 20px;
+        }
+
+        .pros-cons h3 {
+            color: #333;
+            margin: 15px 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        .pros-cons ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .pros-cons li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .pros-cons li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .pros-cons li.cons:before {
+            content: "✗";
+            color: #f44336;
+        }
+
+        #reveal-demo {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 600px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 PDF vs Web Slideshow Comparison</h1>
+        
+        <div class="comparison">
+            <!-- Web Slideshow Card -->
+            <div class="card">
+                <h2>🌐 Web Slideshow (Reveal.js)</h2>
+                <p>Modern, interactive HTML/CSS/JavaScript presentation</p>
+                
+                <div id="reveal-demo" class="reveal">
+                    <div class="slides">
+                        <section>
+                            <h2>Welcome!</h2>
+                            <p>This is a web-based slideshow</p>
+                            <p class="fragment">✨ Fully interactive</p>
+                            <p class="fragment">📱 Responsive design</p>
+                            <p class="fragment">🎨 Customizable</p>
+                        </section>
+                        <section>
+                            <h2>Slide 2</h2>
+                            <p>Navigate with arrow keys or swipe</p>
+                            <p class="fragment">Works on all devices</p>
+                        </section>
+                        <section>
+                            <h2>Slide 3</h2>
+                            <p>Perfect for websites!</p>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="pros-cons">
+                    <h3>✅ Pros:</h3>
+                    <ul>
+                        <li>Native web experience</li>
+                        <li>Fully responsive</li>
+                        <li>Interactive & animated</li>
+                        <li>No external files needed</li>
+                        <li>SEO friendly</li>
+                    </ul>
+                    <h3>❌ Cons:</h3>
+                    <ul>
+                        <li class="cons">Requires coding knowledge</li>
+                        <li class="cons">Can't export to PDF easily</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PDF Card -->
+            <div class="card">
+                <h2>📄 PDF Embedding</h2>
+                <p>Traditional document format embedded in webpage</p>
+                
+                <div class="pdf-container">
+                    <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" 
+                            type="application/pdf">
+                        <p>Your browser doesn't support PDFs. 
+                        <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">Download the PDF</a>.</p>
+                    </iframe>
+                </div>
+
+                <div class="pros-cons">
+                    <h3>✅ Pros:</h3>
+                    <ul>
+                        <li>Easy to create (from PowerPoint, etc.)</li>
+                        <li>Universal format</li>
+                        <li>Can be downloaded</li>
+                        <li>Print-friendly</li>
+                    </ul>
+                    <h3>❌ Cons:</h3>
+                    <ul>
+                        <li class="cons">Less interactive</li>
+                        <li class="cons">Not optimized for web</li>
+                        <li class="cons">Can be slow to load</li>
+                        <li class="cons">Mobile experience varies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px;">
+            <h2>💡 Recommendation</h2>
+            <p><strong>For websites:</strong> Use web slideshows (like Reveal.js) for the best user experience. They're fast, responsive, and feel native to the web.</p>
+            <p><strong>For documents:</strong> Use PDF when you need downloadable, printable content or when sharing files created in PowerPoint/other tools.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script>
+        const revealElement = document.getElementById('reveal-demo');
+        Reveal.initialize({
+            hash: false,
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            embedded: true
+        }, revealElement);
+    </script>
+</body>
+</html>
+
