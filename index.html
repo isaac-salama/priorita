@@ -1056,7 +1056,9 @@
             if (!container) return;
             
             images.forEach((filename) => {
-                const imgPath = `images_ruralidays/${filename}`;
+                // Encode filename to handle special characters
+                const encodedFilename = encodeURIComponent(filename);
+                const imgPath = `images_ruralidays/${encodedFilename}`;
                 const item = document.createElement('div');
                 item.className = isMasonry ? 'galeria-item' : 'espacio-grid-item';
                 item.onclick = () => openModal(imgPath);
