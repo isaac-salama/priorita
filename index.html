@@ -15,27 +15,29 @@
         }
 
         :root {
-            --color-cream: #faf9f6;
+            --color-cream: #f8f7f4;
             --color-white: #ffffff;
-            --color-black: #1a1a1a;
-            --color-olive: #6b7d5a;
+            --color-black: #0a0a0a;
+            --color-olive: #5a6b4a;
+            --color-gold: #c9a961;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.75;
             color: var(--color-black);
             background: var(--color-white);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            font-size: 16px;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            letter-spacing: -0.01em;
-            line-height: 1.2;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
         }
 
         /* Navigation */
@@ -44,28 +46,34 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 40px 60px;
+            padding: 28px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: transparent;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px) saturate(180%);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav.scrolled {
+            padding: 20px 80px;
             background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 25px 60px;
             box-shadow: 0 1px 0 rgba(0,0,0,0.05);
         }
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4em;
+            font-size: 1.5em;
             color: var(--color-black);
             text-decoration: none;
-            letter-spacing: 0.05em;
-            font-weight: 400;
+            letter-spacing: 0.08em;
+            font-weight: 300;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 0.7;
         }
 
         .nav-menu {
@@ -77,23 +85,23 @@
         .nav-menu a {
             color: var(--color-black);
             text-decoration: none;
-            font-size: 0.85em;
+            font-size: 0.7em;
             font-weight: 300;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            transition: opacity 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
         .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -6px;
             left: 0;
             width: 0;
             height: 1px;
             background: var(--color-black);
-            transition: width 0.3s;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-menu a:hover::after {
@@ -101,7 +109,7 @@
         }
 
         .nav-menu a:hover {
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         /* Hero */
@@ -124,7 +132,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.4));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5));
         }
 
         .hero-content {
@@ -132,41 +140,43 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 100px 60px 60px;
+            padding: 120px 80px 80px;
             color: var(--color-white);
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .hero-content h1 {
-            font-size: 4.5em;
+            font-size: 5em;
             font-weight: 300;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             line-height: 1.1;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .hero-content p {
-            font-size: 1.1em;
+            font-size: 1.15em;
             font-weight: 300;
-            opacity: 0.95;
-            max-width: 600px;
+            opacity: 0.9;
+            max-width: 650px;
+            letter-spacing: 0.01em;
         }
 
         /* Sections */
         .section {
-            padding: 40px 60px;
+            padding: 30px 60px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 3.5em;
+            font-size: 3.8em;
             font-weight: 300;
             color: var(--color-black);
-            margin-bottom: 35px;
+            margin-bottom: 50px;
             text-align: center;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
 
         /* Historia Section */
@@ -181,22 +191,23 @@
         }
 
         .historia-text {
-            font-size: 1.3em;
-            line-height: 1.8;
+            font-size: 1.25em;
+            line-height: 1.85;
             color: var(--color-black);
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             font-style: italic;
+            letter-spacing: 0.01em;
         }
         
         .historia-text:last-of-type {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .ubicacion-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 50px;
+            gap: 40px;
         }
 
         .ubicacion-item {
@@ -302,10 +313,10 @@
 
         .espacio-description {
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             text-align: center;
-            font-size: 1.1em;
-            line-height: 1.6;
+            font-size: 0.95em;
+            line-height: 1.5;
             font-weight: 300;
         }
 
@@ -319,11 +330,11 @@
             aspect-ratio: 3/2;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.6s;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .espacio-grid-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.015);
             z-index: 10;
         }
 
@@ -331,23 +342,58 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .espacio-grid-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.06);
+        }
+
+        #casas-adyacentes-grid {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .plano-container {
+            max-width: 600px;
+            margin: 30px auto 0;
+            cursor: pointer;
+            transition: transform 0.4s;
+        }
+
+        .plano-container:hover {
+            transform: scale(1.02);
+        }
+
+        .plano-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
         }
 
         /* Explotación Section */
         .explotacion-section {
             background: var(--color-cream);
-            padding: 30px 0;
+            padding: 20px 0;
+        }
+
+        .explotacion-section .section-title {
+            margin-bottom: 25px;
+        }
+
+        .explotacion-subtitle {
+            font-size: 0.6em;
+            font-style: italic;
+            font-weight: 300;
+            display: inline-block;
+            margin-top: 8px;
         }
 
         .explotacion-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 35px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 60px;
@@ -359,31 +405,34 @@
         }
 
         .explotacion-title {
-            margin-bottom: 30px;
+            margin-bottom: 12px;
         }
 
         .explotacion-title h3 {
-            font-size: 1.5em;
-            font-weight: 400;
+            font-size: 1.4em;
+            font-weight: 600;
             font-family: 'Cormorant Garamond', serif;
             color: var(--color-black);
             letter-spacing: -0.01em;
-            line-height: 1.3;
-            margin-bottom: 15px;
+            line-height: 1.2;
+            margin-bottom: 0;
         }
 
         .explotacion-images {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-bottom: 12px;
+            width: 100%;
+            max-width: 320px;
         }
 
         .explotacion-image {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 1;
+            aspect-ratio: 4/3;
             cursor: pointer;
+            border-radius: 2px;
         }
 
         .explotacion-image img {
@@ -394,31 +443,37 @@
         }
 
         .explotacion-image:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
-        .explotacion-revenue {
+        .explotacion-text {
+            font-size: 0.95em;
+            line-height: 1.5;
+            font-weight: 300;
+            color: var(--color-black);
+            margin-top: 0;
+            max-width: 320px;
+        }
+
+        .explotacion-revenue-total {
+            text-align: center;
+            margin-top: 30px;
             padding-top: 25px;
-            border-top: 1px solid rgba(0,0,0,0.08);
+            border-top: 1px solid rgba(0,0,0,0.12);
         }
 
-        .explotacion-revenue .amount {
-            font-size: 1.8em;
-            font-weight: 300;
-            margin-bottom: 8px;
+        .explotacion-revenue-total p {
+            font-size: 1.4em;
+            font-weight: 400;
+            color: var(--color-black);
             font-family: 'Cormorant Garamond', serif;
-            color: var(--color-black);
-            letter-spacing: -0.02em;
+            letter-spacing: 0.01em;
+            line-height: 1.4;
         }
 
-        .explotacion-revenue .label {
-            font-size: 0.7em;
-            text-transform: uppercase;
-            opacity: 0.5;
-            letter-spacing: 0.12em;
-            font-weight: 300;
-            font-family: 'Inter', sans-serif;
-            color: var(--color-black);
+        .explotacion-revenue-total p strong {
+            font-weight: 500;
+            font-size: 1.1em;
         }
 
         /* Galería Section */
@@ -472,15 +527,16 @@
         }
 
         .galeria-masonry {
-            column-count: 3;
-            column-gap: 2px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
         }
 
         .galeria-item {
-            break-inside: avoid;
-            margin-bottom: 2px;
             cursor: pointer;
             transition: transform 0.4s;
+            aspect-ratio: 3/2;
+            overflow: hidden;
         }
 
         .galeria-item:hover {
@@ -490,7 +546,8 @@
 
         .galeria-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
@@ -498,7 +555,7 @@
         .contacto-section {
             background: var(--color-cream);
             text-align: center;
-            padding: 50px 60px;
+            padding: 80px 80px;
         }
 
         .contacto-content {
@@ -507,9 +564,19 @@
         }
 
         .contacto-content h2 {
-            font-size: 3.5em;
-            margin-bottom: 35px;
+            font-size: 3.8em;
+            margin-bottom: 40px;
             font-weight: 300;
+            letter-spacing: -0.03em;
+        }
+
+        .contacto-intro {
+            font-size: 1em;
+            line-height: 1.6;
+            font-weight: 300;
+            color: var(--color-black);
+            margin-bottom: 25px;
+            opacity: 0.8;
         }
 
         .contacto-info {
@@ -533,12 +600,13 @@
         footer {
             background: var(--color-black);
             color: var(--color-cream);
-            padding: 50px 60px 30px;
+            padding: 60px 80px 40px;
             text-align: center;
-            font-size: 0.85em;
+            font-size: 0.75em;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            opacity: 0.8;
         }
 
         /* Modal */
@@ -583,13 +651,13 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .galeria-masonry {
-                column-count: 2;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 30px 30px;
+                padding: 15px 30px;
             }
 
             .nav-menu {
@@ -619,20 +687,39 @@
             }
 
             .galeria-masonry {
-                column-count: 1;
+                grid-template-columns: 1fr;
             }
 
             .explotacion-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 0 30px;
             }
 
-            .explotacion-column {
-                border-right: none;
-                border-bottom: 1px solid rgba(0,0,0,0.1);
+            .explotacion-section {
+                padding: 15px 0;
             }
 
-            .explotacion-column:last-child {
-                border-bottom: none;
+            .explotacion-section .section-title {
+                margin-bottom: 20px;
+            }
+
+            .explotacion-title {
+                margin-bottom: 10px;
+            }
+
+            .explotacion-title h3 {
+                font-size: 1.3em;
+            }
+
+            .explotacion-images {
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .explotacion-text {
+                max-width: 100%;
+                margin-top: 0;
             }
 
             .espacio-grid {
@@ -714,72 +801,71 @@
         
         <div class="espacios-nav">
             <button class="espacio-nav-item active" data-espacio="casa-principal">Casa Principal</button>
+            <button class="espacio-nav-item" data-espacio="casas-adyacentes">Casas Adyacentes</button>
+            <button class="espacio-nav-item" data-espacio="proyecto">Proyecto de Edificación</button>
             <button class="espacio-nav-item" data-espacio="confort">Confort y Deporte</button>
-            <button class="espacio-nav-item" data-espacio="adyacente">Casa Adyacente</button>
-            <button class="espacio-nav-item" data-espacio="tercera">Tercera Casa</button>
         </div>
 
         <!-- Casa Principal -->
         <div class="espacio-content active" id="casa-principal">
             <p class="espacio-description">
-                La finca tiene 319 hectáreas, cuenta con una casa principal de 424m² que incluye 
-                un salón principal, una cocina, siete dormitorios, cuatro cuartos de baño y un patio interior.
+                Casa principal de 424m² que incluye un salón principal, una cocina, siete dormitorios, cuatro cuartos de baño y un patio interior.
             </p>
             <div class="espacio-grid" id="casa-principal-grid">
                 <!-- Populated by JS -->
             </div>
         </div>
 
+        <!-- Casas Adyacentes -->
+        <div class="espacio-content" id="casas-adyacentes">
+            <p class="espacio-description">
+                <strong>Casa adyacente:</strong><br>
+                - Casa independiente recién renovada con dos dormitorios con cuarto de baño y salón con cocina incorporada.<br>
+                - Casa mirador con dormitorio y cuarto de baño incorporado
+            </p>
+            <div class="espacio-grid" id="casas-adyacentes-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Proyecto de Edificación -->
+        <div class="espacio-content" id="proyecto">
+            <p class="espacio-description">
+                <strong>Proyecto:</strong> Cimientos con permiso de obra para una casa adicional que puede contar con más de diez dormitorios.
+            </p>
+            <div class="plano-container">
+                <img src="images_ruralidays/foto plano.png" alt="Plano tercera casa" class="plano-image" onclick="openModal('images_ruralidays/foto plano.png')">
+            </div>
+        </div>
+
         <!-- Confort y Deporte -->
         <div class="espacio-content" id="confort">
             <p class="espacio-description">
-                Pista de tenis, pista de pádel, campo de fútbol, piscina con bar incorporado, 
-                gimnasio con cuarto de baño, casa mirador con dormitorio y cuarto de baño, capilla.
+                Pista de tenis, pista de pádel, campo de fútbol, piscina con bar incorporado y gimnasio con cuarto de baño.
             </p>
             <div class="espacio-grid" id="confort-grid">
                 <!-- Populated by JS -->
             </div>
         </div>
-
-        <!-- Casa Adyacente -->
-        <div class="espacio-content" id="adyacente">
-            <p class="espacio-description">
-                Casa recién renovada con dos dormitorios con cuarto de baño 
-                y salón con cocina incorporada.
-            </p>
-            <div class="espacio-grid" id="adyacente-grid">
-                <!-- Populated by JS -->
-            </div>
-        </div>
-
-        <!-- Tercera Casa -->
-        <div class="espacio-content" id="tercera">
-            <p class="espacio-description">
-                Cimientos con permiso de obra para una tercera casa de más de 15 dormitorios.
-            </p>
-        </div>
     </section>
 
     <!-- Explotación Finca -->
     <section class="section explotacion-section" id="explotacion">
+        <h2 class="section-title">Explotación</h2>
         <div class="explotacion-grid" id="explotacion-grid">
             <!-- Column 1: Turismo Rural & Eventos -->
             <div class="explotacion-column">
                 <div class="explotacion-title">
-                    <h3>Turismo Rural & Eventos</h3>
+                    <h3>Turismo Rural y Eventos</h3>
                 </div>
                 <div class="explotacion-images">
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_007.jpg')">
-                        <img src="images_ruralidays/ruralidays_007.jpg" alt="Turismo Rural">
-                    </div>
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_009.jpg')">
-                        <img src="images_ruralidays/ruralidays_009.jpg" alt="Eventos">
+                    <div class="explotacion-image" onclick="openModal('images_ruralidays/foto eventos boda definitivo.jpeg')">
+                        <img src="images_ruralidays/foto eventos boda definitivo.jpeg" alt="Turismo Rural y Eventos">
                     </div>
                 </div>
-                <div class="explotacion-revenue">
-                    <div class="amount">50.000€</div>
-                    <div class="label">Facturación 2021</div>
-                </div>
+                <p class="explotacion-text">
+                    Turismo rural con alto nivel de ocupación durante todo el año, celebración de bodas, comuniones y eventos de empresa.
+                </p>
             </div>
 
             <!-- Column 2: Explotación Agrícola -->
@@ -788,17 +874,13 @@
                     <h3>Explotación Agrícola</h3>
                 </div>
                 <div class="explotacion-images">
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_011.jpg')">
-                        <img src="images_ruralidays/ruralidays_011.jpg" alt="Corcho">
-                    </div>
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_012.jpg')">
-                        <img src="images_ruralidays/ruralidays_012.jpg" alt="Cosecha">
+                    <div class="explotacion-image" onclick="openModal('images_ruralidays/corcho definitivo.jpeg')">
+                        <img src="images_ruralidays/corcho definitivo.jpeg" alt="Corcho">
                     </div>
                 </div>
-                <div class="explotacion-revenue">
-                    <div class="amount">2.000€</div>
-                    <div class="label">Facturación Anual</div>
-                </div>
+                <p class="explotacion-text">
+                    Recogida de piña y corcho, posibilidad de plantación agrícola.
+                </p>
             </div>
 
             <!-- Column 3: Explotación Ganadera -->
@@ -807,17 +889,13 @@
                     <h3>Explotación Ganadera</h3>
                 </div>
                 <div class="explotacion-images">
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_013.jpg')">
-                        <img src="images_ruralidays/ruralidays_013.jpg" alt="Ganadería">
-                    </div>
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_014.jpg')">
-                        <img src="images_ruralidays/ruralidays_014.jpg" alt="Ganado">
+                    <div class="explotacion-image" onclick="openModal('images_ruralidays/foto vaca definitivo.jpeg')">
+                        <img src="images_ruralidays/foto vaca definitivo.jpeg" alt="Ganadería">
                     </div>
                 </div>
-                <div class="explotacion-revenue">
-                    <div class="amount">24.500€</div>
-                    <div class="label">Facturación Anual</div>
-                </div>
+                <p class="explotacion-text">
+                    Alquiler de pastos para ganado, criadero de ganado vacuno.
+                </p>
             </div>
 
             <!-- Column 4: Explotación Cinegética -->
@@ -826,18 +904,17 @@
                     <h3>Explotación Cinegética</h3>
                 </div>
                 <div class="explotacion-images">
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_020.jpg')">
-                        <img src="images_ruralidays/ruralidays_020.jpg" alt="Caza">
-                    </div>
-                    <div class="explotacion-image" onclick="openModal('images_ruralidays/ruralidays_023.jpg')">
-                        <img src="images_ruralidays/ruralidays_023.jpg" alt="Fauna">
+                    <div class="explotacion-image" onclick="openModal('images_ruralidays/foto jabali definitivo.jpeg')">
+                        <img src="images_ruralidays/foto jabali definitivo.jpeg" alt="Caza">
                     </div>
                 </div>
-                <div class="explotacion-revenue">
-                    <div class="amount">10.000€</div>
-                    <div class="label">Facturación Anual</div>
-                </div>
+                <p class="explotacion-text">
+                    Venta de montería de jabalíes y venados y gestión de coto para caza menor.
+                </p>
             </div>
+        </div>
+        <div class="explotacion-revenue-total">
+            <p>Facturación anual 70k€-90k€</p>
         </div>
     </section>
 
@@ -854,6 +931,7 @@
     <section class="contacto-section" id="contacto">
         <div class="contacto-content">
             <h2>Contacto</h2>
+            <p class="contacto-intro">Contactar para pedir presupuesto y detalles técnicos de la finca:</p>
             <div class="contacto-info">
                 <div>Ignacio Navarro López del Arco</div>
                 <div><a href="https://wa.me/34683248896" target="_blank" rel="noopener noreferrer">683 248 896</a></div>
@@ -864,7 +942,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>Finca La Priorita &copy; 2022</p>
+        <p>Finca La Priorita © 2025</p>
     </footer>
 
     <!-- Modal -->
@@ -915,17 +993,62 @@
             'ruralidays_184.jpg'
         ];
         
-        // Casa Principal: primeras 5 imágenes
-        const casaPrincipalImages = allRuralidaysImages.slice(0, 5);
+        // Casa Principal: imágenes definitivas (ordenadas)
+        const casaPrincipalImages = [
+            'patio definitiva.jpg',
+            'cocina definitiva.jpg',
+            'comedor definitivo.jpg',
+            'salon billar definitivo.jpg',
+            'cuarto principal definitivo.jpg',
+            'cuarto definitivo.jpg',
+            'cuarto niños definitivo.jpg',
+            'baño principal definitivo.jpg',
+            'terraza definitivo.jpg'
+        ];
         
         // Habitaciones: siguientes 6 imágenes
         const habitacionesImages = allRuralidaysImages.slice(5, 11);
         
-        // Confort y Deporte: siguientes 4 imágenes
-        const confortDeporteImages = allRuralidaysImages.slice(11, 15);
+        // Confort y Deporte: 4 imágenes definitivas
+        const confortDeporteImages = [
+            'jardin piscina definitivo.jpg',
+            'padel definitiva.jpg',
+            'tenis definitivo.jpg',
+            'pantano definitiva.jpeg'
+        ];
         
-        // Todas las imágenes para la galería única
-        const allGalleryImages = allRuralidaysImages;
+        // Todas las imágenes definitivas para la galería (ordenadas)
+        const allGalleryImages = [
+            // Casa Principal
+            'patio definitiva.jpg',
+            'cocina definitiva.jpg',
+            'comedor definitivo.jpg',
+            'salon billar definitivo.jpg',
+            'terraza definitivo.jpg',
+            // Casas Adyacentes
+            'casa adyacente definitivo.jpg',
+            // Confort y Deporte
+            'jardin piscina definitivo.jpg',
+            // Dormitorios y Baño (después de piscina)
+            'cuarto principal definitivo.jpg',
+            'cuarto definitivo.jpg',
+            'cuarto niños definitivo.jpg',
+            'cuarto cuadras definitivo.jpg',
+            'baño principal definitivo.jpg',
+            // Confort y Deporte (continuación)
+            'jardin definitivo.jpg',
+            'padel definitiva.jpg',
+            'tenis definitivo.jpg',
+            'pantano definitiva.jpeg',
+            // Explotación
+            'corcho definitivo.jpeg',
+            'foto eventos boda definitivo.jpeg',
+            'foto vaca definitivo.jpeg',
+            'foto jabali definitivo.jpeg',
+            // Campo y Pasto
+            'pasto definitivo.jpeg',
+            'campo definitiva.jpeg'
+        ];
 
         // Helper function to populate gallery
         function populateGallery(containerId, images, isMasonry = false) {
@@ -954,11 +1077,11 @@
         // Casa Principal: entrada, patio, cocina, salón
         populateGallery('casa-principal-grid', casaPrincipalImages);
         
-        // Confort y Deporte: jardín, piscina, padel, capilla
-        populateGallery('confort-grid', confortDeporteImages);
+        // Casas Adyacentes: foto definitiva
+        populateGallery('casas-adyacentes-grid', ['casa adyacente definitivo.jpg']);
         
-        // Casa Adyacente: mostrar algunas habitaciones (3 imágenes)
-        populateGallery('adyacente-grid', habitacionesImages.slice(0, 3));
+        // Confort y Deporte: jardín, piscina, padel, tenis
+        populateGallery('confort-grid', confortDeporteImages);
 
         // Explotación section is now static HTML, no JS needed
 

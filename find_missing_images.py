@@ -29,3 +29,5 @@ if missing:
     # This is a quick check - the full extraction script should find them
     print("Run extract_all_images.py for complete extraction")
 
+
+

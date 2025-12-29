@@ -250,3 +250,5 @@ if __name__ == "__main__":
     
     extract_all_images_from_ppt(ppt_file)
 
+
+
